@@ -15,7 +15,7 @@ public class SCC_Computation {
 
     private static int TIME = 0;
     private static Vertex LEADER = null;
-    private static final int MAX_RECURSION_LEVEL = 500;
+    private static final int MAX_RECURSION_LEVEL = 2000;
     private static int CURRENT_RECURSION_LEVEL = 0;
     private static Vertex CURRENT_RECURSION_VERTEX = null;
     private static Stack<Vertex> RECURSION_HISTORY = new Stack<>();
@@ -33,11 +33,11 @@ public class SCC_Computation {
         graph.markUnexplored();
         DFSLoop(graph, Direction.OUT);
 //        System.out.println("Total number of SCC = " + LEADER_COUNT.size());
-        System.out.println("Leader Count \n" + Arrays.toString(LEADER_COUNT));
+//        System.out.println("Leader Count \n" + Arrays.toString(LEADER_COUNT));
         BubbleSort.sort(LEADER_COUNT, 5);
         Long endTime = new Date().getTime();
-        double totalTime = ((double) (endTime - startTime) / (1000 * 60));
-        System.out.println("Total Time = " + totalTime + " min");
+        double totalTime = ((double) (endTime - startTime) / (1000));
+        System.out.println("Total Time = " + totalTime + " sec");
     }
 
     public static Graph readGraphFromFile(String path, int length) throws NumberFormatException, IOException {
