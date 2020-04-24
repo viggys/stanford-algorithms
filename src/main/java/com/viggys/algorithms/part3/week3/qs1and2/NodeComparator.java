@@ -1,4 +1,4 @@
-package com.viggys.algorithms.part3.week3;
+package com.viggys.algorithms.part3.week3.qs1and2;
 
 import java.util.Comparator;
 
