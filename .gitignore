@@ -4,6 +4,8 @@
 /target/
 /bin/
 
-/learning-algorithms.iml
+/*.iml
 /.idea/
 /out/
+
+**/test.txt
