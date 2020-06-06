@@ -1,8 +1,6 @@
 package com.viggys.algorithms.part2.week1;
 
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
-import java.util.List;
 import java.util.stream.Stream;
 
 public class Graph {
@@ -49,10 +47,12 @@ public class Graph {
 	}
 
 	public void markUnexplored() {
-		this.vertices = null;
+//		this.vertices = null;
 		Stream.of(this.orderedVertices).forEach(vertex -> {
-			vertex.setExplored(false);
-			vertex.setTails(new ArrayList<>());
+			if(vertex != null) {
+				vertex.setExplored(false);
+				vertex.setTails(new ArrayList<>());
+			}
 		});
 	}
 }

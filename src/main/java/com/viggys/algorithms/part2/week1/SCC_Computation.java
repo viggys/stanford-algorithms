@@ -1,17 +1,17 @@
 package com.viggys.algorithms.part2.week1;
 
-import com.viggys.algorithms.part1.week3.QuickSort;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Stack;
 
 public class SCC_Computation {
 
     private static final String PATH = "src/main/resources/SCC.txt";
-    private static final int LENGTH = 875714;
+    public static int LENGTH = 875714;
 
     private static int TIME = 0;
     private static Vertex LEADER = null;
@@ -19,7 +19,16 @@ public class SCC_Computation {
     private static int CURRENT_RECURSION_LEVEL = 0;
     private static Vertex CURRENT_RECURSION_VERTEX = null;
     private static Stack<Vertex> RECURSION_HISTORY = new Stack<>();
-    private static int[] LEADER_COUNT = new int[LENGTH];
+    public static int[] LEADER_COUNT = new int[LENGTH];
+
+    public static void reset() {
+        TIME = 0;
+        LEADER = null;
+        CURRENT_RECURSION_LEVEL = 0;
+        CURRENT_RECURSION_VERTEX = null;
+        RECURSION_HISTORY = new Stack<>();
+        LEADER_COUNT = new int[LENGTH];
+    }
 
     public static void main(String[] args) throws IOException {
 
@@ -69,7 +78,7 @@ public class SCC_Computation {
         for(int i = vertices.length; i > 0; i--) {
             Vertex vertex = vertices[i - 1];
             CURRENT_RECURSION_VERTEX = null;
-            if(!vertex.isExplored()) {
+            if(vertex != null && !vertex.isExplored()) {
                 vertex.setExplored(true);
                 LEADER = vertex;
                 while(CURRENT_RECURSION_VERTEX != vertex) {
